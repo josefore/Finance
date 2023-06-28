@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search results
+{% endblock %}
+
+{% block main %}
+    <h1>Results</h1>
+    <p>Your tokens: $ {{ cash }}</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Symbol</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ results.name }}</td>
+                <td>{{ results.price }}</td>
+                <td>{{ results.symbol }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

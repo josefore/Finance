@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <h1>Your transactions history</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trs in transactions %}
+                <tr>
+                    <td>{{ trs.symbol }}</td>
+                    <td>{{ trs.name }}</td>
+                    <td>{{ trs.amount }}</td>
+                    <td>$ {{ trs.pPrice }}</td>
+                    <td>{{ trs.type }}</td>
+                    <td>{{ trs.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/sell"><button type="button" class="btn btn-primary">Sell stocks!</button></a>
+    <a href="/buy"><button type="button" class="btn btn-primary">Buy more shares!</button></a>
+{% endblock %}

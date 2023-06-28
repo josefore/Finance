@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My stocks
+{% endblock %}
+
+{% block main %}
+    <h1>My stocks</h1><hr>
+    <p>Your tokens: {{ cash }}</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Percentage</th>
+                <th>Gain/Loss</th>
+                <th>Symbol</th>
+                <th>Owned</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for share in stock %}
+                <tr>
+                    <td>{{ share.name }}</td>
+                    {% if share.u_o_d == 1 %}
+                        <td style="color:red;">{{ share.price }}</td>
+                        <td style="color:red;">{{ share.pctg }} %</td>
+                        <td style="color:red;">{{ share.g_l }}</td>
+                    {% elif share.u_o_d == 2 %}
+                        <td style="color:green;">{{ share.price }}</td>
+                        <td style="color:green;">{{ share.pctg }} %</td>
+                        <td style="color:green;">{{ share.g_l }}</td>
+                    {% else %}
+                        <td style="color:black;">{{ share.price }}</td>
+                        <td style="color:black;">-</td>
+                        <td style="color:black;">{{ share.g_l }}</td>
+                    {% endif %}
+                    <td>{{ share.symbol }}</td>
+                    <td>{{ share.quantity }}</td>
+                    <td>{{ share.total }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h4>Balance: {{ balance }}</h4>
+    <a href="/sell"><button type="button" class="btn btn-primary">Sell stocks!</button></a>
+    <a href="/buy"><button type="button" class="btn btn-primary">Buy more shares!</button></a>
+
+{% endblock %}
